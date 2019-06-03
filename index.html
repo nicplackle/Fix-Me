@@ -96,7 +96,31 @@
             </table>
         </div>
         <script>
-            // Write your code here
+
+            /* test */
+
+            document.getElementById("emptyRow").onkeypress = function (event) {
+                    if (event.keyCode == 13 || event.which == 13) {
+                        return formChecker();
+                    }
+                };
+                function formChecker() {
+                    var name = document.getElementById("name").value;
+                    var pizza = document.getElementById("pizza").value;
+                    var size = document.getElementById("size").value;
+                    var remarks = document.getElementById("remarks").value;
+                    if (name !== "" && pizza !== "" && size !== "") {
+                        var table = document.getElementById("pizzaOrders");
+                        var row = table.insertRow(1);
+                        var cel1 = row.insertCell(0);
+                        var cel2 = row.insertCell(1);
+                        var cel3 = row.insertCell(2);
+                        var cel4 = row.insertCell(3);
+                    } else {
+                        alert("Please fill in all fields");
+                    }
+                }
+            /* end test */
         </script>
     </div>
     <!-- END OF Part 2 -->
