@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
     <link rel="stylesheet" href="stylesheet.css">
-
 </head>
+
 <body class="bg-dark pt-4">
 <div id="exercisesHolder" class="container">
 
@@ -42,14 +42,19 @@
             </p>
             <hr>
             <br>
-            <label for="greetingsBox">Type your message here: <input type="text" id="greetingsBox" class="form-control"/></label>
+            <label for="greetingsBox">Type your message here: <input type="text" id="greetingsBox" class="form-control" oninput="myFunction()"/></label>
 
-            <div class="col-6 mx-auto p-2 greetingsBoxHolder">
+            <div class="col-6 mx-auto p-2 greetingsBoxHolder" id="greetingsBoxHolder">
                 <h3><!-- Your message comes here--></h3>
             </div>
         </div>
         <script>
             // Write your code here
+            function myFunction() {
+              var x = document.getElementById("greetingsBox")            .value;
+              document.getElementById( "greetingsBoxHolder").innerHTML = x;
+            }
+
         </script>
     </div>
     <!-- END OF Part 1 -->
