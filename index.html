@@ -97,8 +97,6 @@
         </div>
         <script>
 
-            /* test */
-
             document.getElementById("emptyRow").onkeypress = function (event) {
                     if (event.keyCode == 13 || event.which == 13) {
                         return formChecker();
@@ -120,7 +118,10 @@
                         alert("Please fill in all fields");
                     }
                 }
-            /* end test */
+            
+            
+
+
         </script>
     </div>
     <!-- END OF Part 2 -->
@@ -402,8 +403,54 @@
 
             <div id="moveAnimation" class="block"></div>
         </div>
+    </div>    
         <script>
             // Write your code here
+            
+            let elem = document.getElementById("moveAnimation");
+                elem.addEventListener("click", moveGreenCube);
+                function moveGreenCube() {
+                    let startPosition = 0;
+                    let intervalRight = setInterval(frameRight, 10);
+                    
+                    function frameRight() {
+                        if (startPosition >= 100) {
+                             clearInterval(intervalRight);
+                             intervalLeft = setInterval(frameLeft,10);
+                             
+                        } else {
+                            startPosition += 0.5;
+                            document.getElementById("moveAnimation").style.left = startPosition + "%";
+                        }
+                    }
+                    function frameLeft() {
+                        if (startPosition <= 0) {
+                            clearInterval(intervalLeft);
+                            intervalRight = setInterval(frameRight,10);
+                        } else {
+                            startPosition -= 0.2;
+                            document.getElementById("moveAnimation").style.left = startPosition + "%";
+                        }
+                    }
+                }
+
+            /* test 2 */
+            /* window.onload = loadPage;
+            function loadPage() {
+            let elem = document.getElementById("moveAnimation");   
+                let pos = 0;
+                let id = setInterval(frame, 0.01);
+                function frame() {
+                  if (pos == 1092) {
+                    clearInterval(id);
+                  } else {
+                    pos++; 
+                    elem.style.left = pos + "px";
+                  }
+                }
+                
+            }*/
+
         </script>
     </div>
     <!-- END OF Part 5 -->
