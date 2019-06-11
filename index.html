@@ -434,22 +434,6 @@
                     }
                 }
 
-            /* test 2 */
-            /* window.onload = loadPage;
-            function loadPage() {
-            let elem = document.getElementById("moveAnimation");   
-                let pos = 0;
-                let id = setInterval(frame, 0.01);
-                function frame() {
-                  if (pos == 1092) {
-                    clearInterval(id);
-                  } else {
-                    pos++; 
-                    elem.style.left = pos + "px";
-                  }
-                }
-                
-            }*/
 
         </script>
     </div>
@@ -467,6 +451,37 @@
         </div>
         <script>
             // Write your code here
+
+            function getMouseCoords(e) {
+            var e = e || window.event;
+            document.getElementByClassName('col-12 bg-white shadow-sm p-4 mx-auto mt-4').innerHTML = e.clientX + ', ' +
+              e.clientY + '<br>' + e.screenX + ', ' + e.screenY;
+            }           
+
+            var followCursor = (
+            function() {
+            var s = document.getElementById('followMouse');
+            s.style.position = 'absolute';
+            
+            return {
+              init: function() {
+                document.body.appendChild(s);
+              },
+          
+              run: function(e) {
+                var e = e || window.event;
+                s.style.left = (e.clientX - 5) + 'px';
+                s.style.top = (e.clientY - 5) + 'px';
+                getMouseCoords(e);
+              }
+            };
+            }(          ));
+
+            window.onload = function() {
+              followCursor.init();
+              document.body.onmousemove = followCursor.run;
+            }            
+
         </script>
     </div>
     <!-- END OF Part 6 -->
